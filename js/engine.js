@@ -23,7 +23,8 @@ var Engine = (function(global) {
         win = global.window,
         canvas = doc.createElement('canvas'),
         ctx = canvas.getContext('2d'),
-        lastTime;
+        lastTime,
+        won = false;
 
     canvas.width = 505;
     canvas.height = 606;
@@ -110,13 +111,31 @@ var Engine = (function(global) {
       });
     }
     function checkWinning() {
-        if(player.y <= 0){
-          alert("You Won!!!");
+        if(won === true){
+          won = false;
+          alert("You Won!!");
           player.reset();
-          alert("This is a new game!!");
+          alert("New Game!!");
           player.life = 3;
         }
+        if(player.y <= 0){
+          won = true;
+        }
     }
+
+    // function message(str) {
+    //   ctx.save();
+    //   ctx.fillStyle = '#888';
+    //   ctx.fillRect(100,100,300,300);
+    //   ctx.fillStyle = '#00F';
+    //   ctx.font = 'Bold 30px Sans-Serif';
+    //   ctx.strokeText('Hello world!', 150, 150);
+    //   var myTimeOut = setTimeout(function() {
+    //     ctx.restore();
+    //     clearTimeout(myTimeOut);
+    //   }, 3000);
+    // }
+
     /* This function initially draws the "game level", it will then call
      * the renderEntities function. Remember, this function is called every
      * game tick (or loop of the game engine) because that's how games work -

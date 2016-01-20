@@ -46,7 +46,8 @@ var player = function() {
   this.sprite = (choosePlayer)();
 }
 var choosePlayer = function() {
-  var char = prompt("Choose Character");
+  var str = "Type number of Character to Choose: \n1 Boy \n2 Cat Girl\n3 Horn Girl\n4 Pink Girl\n5 Princess Girl"
+  var char = prompt(str);
   switch (char) {
     case "1":
         return "images/char-boy.png";
@@ -67,6 +68,10 @@ var choosePlayer = function() {
       return "images/char-boy.png";
       break;
   }
+};
+var choosePlayerUI = function() {
+  context.save();
+  context.restore();
 };
 
 player.prototype.update = function (x, y) {
